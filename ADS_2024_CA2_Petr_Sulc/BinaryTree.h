@@ -5,6 +5,7 @@
 template <class T>
 class BinaryTree
 {
+private:
 	void addItemToArray(BSTNode<T>* node, int& pos, T* arr);
 public:
 	BSTNode<T>* root;
@@ -50,21 +51,23 @@ BinaryTree<T> BinaryTree<T>::operator=(const BinaryTree<T>& other)
 	else
 		root = nullptr;
 	return *this;
-
 }
+
+/*
 template <class T>
 void BinaryTree<T>::add(T& item)
 {
 	if (root == nullptr)
 	{
 		root = new BSTNode<T>(item);
-		root->setItem(item);
 	}
 	else
 	{
 		root->add(item);
 	}
 }
+*/
+
 template <class T>
 int BinaryTree<T>::count()
 {
