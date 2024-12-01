@@ -13,19 +13,19 @@ namespace Microsoft
 			template<>
 			static std::wstring ToString<BinaryTree<int>>(const BinaryTree<int>& t)
 			{
-				return L"BSTNode<int> value";
+				return L"BinaryTree<int> value";
 			}
 
 			template<>
 			static std::wstring ToString<BinaryTree<int>>(const BinaryTree<int>* t)
 			{
-				return L"BSTNode<int> const pointer";
+				return L"BinaryTree<int> const pointer";
 			}
 
 			template<>
 			static std::wstring ToString<BinaryTree<int>>(BinaryTree<int>* t)
 			{
-				return L"BSTNode<int> pointer";
+				return L"BinaryTree<int> pointer";
 			}
 		}
 	}
@@ -139,12 +139,9 @@ namespace BinaryTreeUnitTests
 			tree.add(c);
 			tree.add(d);
 			
-			int foundValue;
-			bool found = tree.get(d, foundValue);
+			BSTNode<int>* found = tree.get(d);
 
-			
-			Assert::AreEqual(d, foundValue);
-			Assert::IsTrue(found);
+			Assert::AreEqual(d, found->getItem());
 		}
 
 		TEST_METHOD(GetNonExisitingTest)
@@ -158,11 +155,9 @@ namespace BinaryTreeUnitTests
 			tree.add(b);
 			tree.add(c);
 
-			int foundValue = 0;
-			bool found = tree.get(d, foundValue);
+			BSTNode<int>* found = tree.get(d);
 
-			Assert::AreEqual(0, foundValue);
-			Assert::IsFalse(found);
+			Assert::IsNull(found);
 		}
 
 		TEST_METHOD(RemoveEmptyTest)
@@ -429,6 +424,35 @@ namespace BinaryTreeUnitTests
 			Assert::AreEqual(6, arr[3]);
 			Assert::AreEqual(7, arr[4]);
 			Assert::AreEqual(8, arr[5]);
+			Assert::AreEqual(9, arr[6]);
+		}
+
+		TEST_METHOD(ToArrayPreOrderTest)
+		{
+			int a = 5;
+			int b = 8;
+			int c = 6;
+			int d = 7;
+			int e = 9;
+			int f = 3;
+			int g = 4;
+			BinaryTree<int> tree;
+			tree.add(a);
+			tree.add(b);
+			tree.add(c);
+			tree.add(d);
+			tree.add(e);
+			tree.add(f);
+			tree.add(g);
+
+			int* arr = tree.toArrayPreOrder();
+
+			Assert::AreEqual(5, arr[0]);
+			Assert::AreEqual(3, arr[1]);
+			Assert::AreEqual(4, arr[2]);
+			Assert::AreEqual(8, arr[3]);
+			Assert::AreEqual(6, arr[4]);
+			Assert::AreEqual(7, arr[5]);
 			Assert::AreEqual(9, arr[6]);
 		}
 

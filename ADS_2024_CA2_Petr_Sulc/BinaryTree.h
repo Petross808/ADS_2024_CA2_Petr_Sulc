@@ -7,6 +7,7 @@ class BinaryTree
 {
 private:
 	void addItemToArray(BSTNode<T>* node, int& pos, T* arr);
+	void addItemToArrayPreOrder(BSTNode<T>* node, int& pos, T* arr);
 
 public:
 	BSTNode<T>* root;
@@ -20,7 +21,7 @@ public:
 	bool remove(T& item);
 	void clear();
 	int count();
-	bool get(T& item, T& out);
+	BSTNode<T>* get(T& item);
 
 	void printInOrder(std::ostream& os);
 	void printInOrder(BSTNode<T>* node, std::ostream& os);
@@ -30,6 +31,7 @@ public:
 	void printPostOrder(BSTNode<T>* node, std::ostream& os);
 
 	T* toArray();
+	T* toArrayPreOrder();
 
 	~BinaryTree();
 };
@@ -170,23 +172,19 @@ bool BinaryTree<T>::remove(T& item)
 }
 
 template <class T>
-bool BinaryTree<T>::get(T& item, T& out)
+BSTNode<T>* BinaryTree<T>::get(T& item)
 {
-	bool found;
 	BSTNode<T>* current = root;
 	while (true)
 	{
 		if (current == nullptr)
 		{
-			found = false;
-			break;
+			return nullptr;
 		}
 
 		if (current->getItem() == item)
 		{
-			out = current->getItem();
-			found = true;
-			break;
+			return current;
 		}
 
 		if (current->getItem() > item)
@@ -194,8 +192,6 @@ bool BinaryTree<T>::get(T& item, T& out)
 		else
 			current = current->getRight();
 	}
-
-	return found;
 }
 
 template <class T>
@@ -208,7 +204,18 @@ void BinaryTree<T>::addItemToArray(BSTNode<T>* node, int& pos, T* arr)
 		pos++;
 		addItemToArray(node->getRight(), pos, arr);
 	}
+}
 
+template <class T>
+void BinaryTree<T>::addItemToArrayPreOrder(BSTNode<T>* node, int& pos, T* arr)
+{
+	if (node != nullptr)
+	{
+		arr[pos] = node->getItem();
+		pos++;
+		addItemToArrayPreOrder(node->getLeft(), pos, arr);
+		addItemToArrayPreOrder(node->getRight(), pos, arr);
+	}
 }
 
 template <class T>
@@ -220,6 +227,18 @@ T* BinaryTree<T>::toArray()
 	T* arr = new T[root->count()];
 	int pos = 0;
 	addItemToArray(root, pos, arr);
+	return arr;
+}
+
+template <class T>
+T* BinaryTree<T>::toArrayPreOrder()
+{
+	if (root == nullptr)
+		return nullptr;
+
+	T* arr = new T[root->count()];
+	int pos = 0;
+	addItemToArrayPreOrder(root, pos, arr);
 	return arr;
 }
 
