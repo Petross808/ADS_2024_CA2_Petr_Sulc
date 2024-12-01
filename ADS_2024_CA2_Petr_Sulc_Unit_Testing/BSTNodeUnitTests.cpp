@@ -31,7 +31,7 @@ namespace Microsoft
 	}
 }
 
-namespace ADS2024CA2PetrSulcUnitTesting
+namespace BSTNodeUnitTests
 {
 	TEST_CLASS(BSTNodeTestClass)
 	{
