@@ -115,12 +115,16 @@ template <class T>
 void BSTNode<T>::setLeft(BSTNode<T> *l)
 {
 	this->left = l;
+	if(l != nullptr)
+		this->left->parent = this;
 }
 
 template <class T>
 void BSTNode<T>::setRight(BSTNode<T> *r)
 {
 	this->right = r;
+	if (r != nullptr)
+		this->right->parent = this;
 }
 
 template <class T>
@@ -133,13 +137,11 @@ BSTNode<T>& BSTNode<T>::operator=(const BSTNode<T>& other)
 	parent = left = right = nullptr;
 	if (other.left != nullptr)
 	{
-		this->left = new BSTNode<T>(*other.left);
-		this->left->parent = this;
+		this->setLeft(new BSTNode<T>(*other.left));
 	}
 	if (other.right != nullptr)
 	{
-		this->right = new BSTNode<T>(*other.right);
-		this->right->parent = this;
+		this->setRight(new BSTNode<T>(*other.right));
 	}
 	return *this;
 }

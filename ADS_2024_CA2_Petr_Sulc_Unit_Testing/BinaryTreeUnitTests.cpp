@@ -193,7 +193,7 @@ namespace BinaryTreeUnitTests
 			Assert::AreEqual(3, tree.count());
 		}
 
-		TEST_METHOD(RemoveExistingTest)
+		TEST_METHOD(RemoveExistingNoChildrenTest)
 		{
 			int a = 5;
 			int b = 8;
@@ -213,6 +213,143 @@ namespace BinaryTreeUnitTests
 			Assert::AreEqual(5, arr[0]);
 			Assert::AreEqual(6, arr[1]);
 			Assert::AreEqual(8, arr[2]);
+		}
+
+		TEST_METHOD(RemoveExistingOneChildTest)
+		{
+			int a = 5;
+			int b = 3;
+			int c = 7;
+			int d = 8;
+			BinaryTree<int> tree;
+			tree.add(a);
+			tree.add(b);
+			tree.add(c);
+			tree.add(d);
+
+			bool removed = tree.remove(c);
+			int* arr = tree.toArray();
+
+			Assert::IsTrue(removed);
+			Assert::AreEqual(3, tree.count());
+			Assert::AreEqual(3, arr[0]);
+			Assert::AreEqual(5, arr[1]);
+			Assert::AreEqual(8, arr[2]);
+		}
+
+		TEST_METHOD(RemoveExistingTwoChildrenTest)
+		{
+			int a = 5;
+			int b = 7;
+			int c = 6;
+			int d = 8;
+			BinaryTree<int> tree;
+			tree.add(a);
+			tree.add(b);
+			tree.add(c);
+			tree.add(d);
+
+			bool removed = tree.remove(b);
+			int* arr = tree.toArray();
+
+			Assert::IsTrue(removed);
+			Assert::AreEqual(3, tree.count());
+			Assert::AreEqual(5, arr[0]);
+			Assert::AreEqual(6, arr[1]);
+			Assert::AreEqual(8, arr[2]);
+		}
+
+		TEST_METHOD(RemoveExistingComplexTest)
+		{
+			int a = 5;
+			int b = 3;
+			int c = 9;
+			int d = 7;
+			int e = 11;
+			int f = 6;
+			int g = 8;
+			int h = 10;
+			int i = 12;
+			BinaryTree<int> tree;
+			tree.add(a);
+			tree.add(b);
+			tree.add(c);
+			tree.add(d);
+			tree.add(e);
+			tree.add(f);
+			tree.add(g);
+			tree.add(h);
+			tree.add(i);
+
+			bool removed = tree.remove(c);
+			int* arr = tree.toArray();
+
+			Assert::IsTrue(removed);
+			Assert::AreEqual(8, tree.count());
+			Assert::AreEqual(3, arr[0]);
+			Assert::AreEqual(5, arr[1]);
+			Assert::AreEqual(6, arr[2]);
+			Assert::AreEqual(7, arr[3]);
+			Assert::AreEqual(8, arr[4]);
+			Assert::AreEqual(10, arr[5]);
+			Assert::AreEqual(11, arr[6]);
+			Assert::AreEqual(12, arr[7]);
+		}
+
+		TEST_METHOD(RemoveExistingComplex2Test)
+		{
+			int a = 5;
+			int b = 9;
+			int c = 7;
+			int d = 11;
+			int e = 8;
+			BinaryTree<int> tree;
+			tree.add(a);
+			tree.add(b);
+			tree.add(c);
+			tree.add(d);
+			tree.add(e);
+
+			bool removed = tree.remove(a);
+			int* arr = tree.toArray();
+
+			Assert::IsTrue(removed);
+			Assert::AreEqual(4, tree.count());
+			Assert::AreEqual(7, arr[0]);
+			Assert::AreEqual(8, arr[1]);
+			Assert::AreEqual(9, arr[2]);
+			Assert::AreEqual(11, arr[3]);
+		}
+
+		TEST_METHOD(RemoveRootOneChildTest)
+		{
+			int a = 5;
+			int b = 3;
+			BinaryTree<int> tree;
+			tree.add(a);
+			tree.add(b);
+
+
+			bool removed = tree.remove(a);
+			int* arr = tree.toArray();
+
+			Assert::IsTrue(removed);
+			Assert::AreEqual(1, tree.count());
+			Assert::AreEqual(3, arr[0]);
+		}
+
+		TEST_METHOD(RemoveRootNoChildrenTest)
+		{
+			int a = 5;
+			BinaryTree<int> tree;
+			tree.add(a);
+
+
+			bool removed = tree.remove(a);
+
+			Assert::IsTrue(removed);
+			Assert::AreEqual(0, tree.count());
+			Assert::IsNull(tree.root);
 		}
 
 
@@ -293,6 +430,17 @@ namespace BinaryTreeUnitTests
 			Assert::AreEqual(7, arr[4]);
 			Assert::AreEqual(8, arr[5]);
 			Assert::AreEqual(9, arr[6]);
+		}
+
+		TEST_METHOD(ToArrayEmptyTest)
+		{
+
+			BinaryTree<int> tree;
+
+
+			int* arr = tree.toArray();
+
+			Assert::IsNull(arr);
 		}
 
 		TEST_METHOD(PrintInOrderTest)
