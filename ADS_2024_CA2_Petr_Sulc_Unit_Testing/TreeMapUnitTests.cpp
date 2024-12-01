@@ -41,7 +41,7 @@ namespace TreeMapUnitTests
 			TreeMap<int, string> map;
 			map.put(1, "test");
 			
-			string actual = map.get(1);
+			string actual = map.get(1).first()->value;
 			string expected = "test";
 
 			Assert::AreEqual(1, map.size());
@@ -54,11 +54,15 @@ namespace TreeMapUnitTests
 			map.put(1, "test");
 			map.put(1, "test2");
 
-			string actual = map.get(1);
+			string actual = map.get(1).first()->value;
 			string expected = "test";
+
+			string actual2 = map.get(1).first()->next->value;
+			string expected2 = "test2";
 
 			Assert::AreEqual(1, map.size());
 			Assert::AreEqual(expected, actual);
+			Assert::AreEqual(expected2, actual2);
 		}
 
 		TEST_METHOD(GetExistTest)
@@ -66,7 +70,7 @@ namespace TreeMapUnitTests
 			TreeMap<int, string> map;
 			map.put(1, "test");
 
-			string actual = map.get(1);
+			string actual = map.get(1).first()->value;
 			string expected = "test";
 
 			Assert::AreEqual(expected, actual);
@@ -77,20 +81,14 @@ namespace TreeMapUnitTests
 			TreeMap<int, string> map;
 			map.put(1, "test");
 
-			string actual = map.get(2);
-			string expected = "";
-
-			Assert::AreEqual(expected, actual);
+			Assert::IsNull(map.get(2).first());
 		}
 
 		TEST_METHOD(GetEmptyTest)
 		{
 			TreeMap<int, string> map;
 
-			string actual = map.get(2);
-			string expected = "";
-
-			Assert::AreEqual(expected, actual);
+			Assert::IsNull(map.get(2).first());
 		}
 
 		TEST_METHOD(SizeEmptyTest)
@@ -276,7 +274,7 @@ namespace TreeMapUnitTests
 			map.put(7, "test6");
 			map.put(3, "test7");
 
-			string actual = map[6];
+			string actual = map[6].first()->value;
 			string expected = "test4";
 
 			Assert::AreEqual(expected, actual);
@@ -293,20 +291,14 @@ namespace TreeMapUnitTests
 			map.put(7, "test6");
 			map.put(3, "test7");
 
-			string actual = map[9];
-			string expected = "";
-
-			Assert::AreEqual(expected, actual);
+			Assert::IsNull(map[9].first());
 		}
 
 		TEST_METHOD(SquareBracketOperatorEmptyTest)
 		{
 			TreeMap<int, string> map;
 
-			string actual = map[6];
-			string expected = "";
-
-			Assert::AreEqual(expected, actual);
+			Assert::IsNull(map[6].first());
 		}
 
 	};

@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 
 using namespace std;
 template <class T>
@@ -165,7 +164,10 @@ template <class T>
 void BSTNode<T>::add(T& item)
 {
 	if (item == this->data)
+	{
+		this->data = item;
 		return;
+	}
 
 	if (item < this->data)
 	{

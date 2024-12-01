@@ -1,20 +1,45 @@
 // ADS_2024_CA2_Petr_Sulc.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-#include "TreeMap.h"
+#include "ApplicationPart2.h"
+
+void part2()
+{
+	ApplicationPart2 app;
+	app.LoadFile("WordListPart2.txt");
+
+	cout << "Part 2:" << endl;
+	bool quit = false;
+	while (!quit)
+	{
+		cout << "\n1 - print keys\n2 - print values\n3 - quit\n Input: ";
+		string in;
+		cin >> in;
+		if (in == "1")
+		{
+			cout << endl;
+			app.PrintKeys();
+		}
+		else if (in == "2")
+		{
+			cout << "Choose a letter: ";
+			cin >> in;
+			cout << endl;
+			app.PrintValues(in[0]);
+		}
+		else if (in == "3")
+		{
+			quit = true;
+		}
+		else
+		{
+			cout << "Invalid command" << endl;
+		}
+	}
+}
+
 
 int main()
 {
+	part2();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

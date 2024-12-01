@@ -1,11 +1,12 @@
 #pragma once
+#include "ValueList.h"
 
 template<class K, class V>
 struct KVPair
 {
 private:
 	K key;
-	V value;
+	ValueList<V> values;
 
 public:
 
@@ -14,28 +15,31 @@ public:
 	KVPair();
 
 	K getKey();
-	V getValue();
+	ValueList<V> getValueList();
 
 	bool operator<(KVPair<K, V>& other);
 	bool operator>(KVPair<K, V>& other);
 	bool operator==(KVPair<K, V>& other);
+	KVPair<K, V>& operator=(KVPair<K, V>& other);
 };
 
 template<class K, class V>
 inline KVPair<K, V>::KVPair(K k, V v)
 {
 	key = k;
-	value = v;
+	values.add(v);
 }
 
 template<class K, class V>
-inline KVPair<K, V>::KVPair(K k) : value()
+inline KVPair<K, V>::KVPair(K k)
 {
 	key = k;
 }
 
 template<class K, class V>
-inline KVPair<K, V>::KVPair() : key(), value() { }
+inline KVPair<K, V>::KVPair() : key()
+{
+}
 
 template<class K, class V>
 inline K KVPair<K, V>::getKey()
@@ -44,9 +48,9 @@ inline K KVPair<K, V>::getKey()
 }
 
 template<class K, class V>
-inline V KVPair<K, V>::getValue()
+inline ValueList<V> KVPair<K, V>::getValueList()
 {
-	return value;
+	return values;
 }
 
 template<class K, class V>
@@ -66,3 +70,14 @@ inline bool KVPair<K, V>::operator==(KVPair<K, V>& other)
 {
 	return key == other.key;
 }
+
+
+template<class K, class V>
+inline KVPair<K, V>& KVPair<K, V>::operator=(KVPair<K, V>& other)
+{
+	key = other.getKey();
+	auto otherVals = other.getValueList();
+	values.add(otherVals);
+	return *this;
+}
+

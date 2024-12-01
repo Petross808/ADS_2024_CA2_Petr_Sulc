@@ -12,14 +12,14 @@ public:
 	void put(K key, V value);
 
 	bool containsKey(K key);
-	V get(K key);
+	ValueList<V> get(K key);
 
 	bool removeKey(K key);
 	void clear();
 
 	int size();
 	BinaryTree<K> keySet();
-	V operator[](K key);
+	ValueList<V> operator[](K key);
 };
 
 template<class K, class V>
@@ -36,14 +36,15 @@ inline bool TreeMap<K, V>::containsKey(K key)
 }
 
 template<class K, class V>
-inline V TreeMap<K, V>::get(K key)
+inline ValueList<V> TreeMap<K, V>::get(K key)
 {
-	BSTNode<KVPair<K, V>>* found = binaryTree.get(KVPair<K, V>(key));
+	KVPair<K, V> keyPair(key);
+	BSTNode<KVPair<K, V>>* found = binaryTree.get(keyPair);
 
 	if (found == nullptr)
-		return V();
+		return ValueList<V>();
 
-	return found->getItem().getValue();
+	return found->getItem().getValueList();
 }
 
 template<class K, class V>
@@ -80,7 +81,7 @@ inline BinaryTree<K> TreeMap<K, V>::keySet()
 }
 
 template<class K, class V>
-inline V TreeMap<K, V>::operator[](K key)
+inline ValueList<V> TreeMap<K, V>::operator[](K key)
 {
 	return get(key);
 }
