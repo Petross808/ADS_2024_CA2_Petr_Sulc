@@ -18,12 +18,18 @@
     <ClCompile Include="ADS_2024_CA2_Petr_Sulc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TreeMap.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BSTNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KVPair.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
