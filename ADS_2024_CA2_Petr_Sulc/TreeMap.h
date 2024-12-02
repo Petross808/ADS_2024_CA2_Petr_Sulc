@@ -20,6 +20,8 @@ public:
 	int size();
 	BinaryTree<K> keySet();
 	ValueList<V> operator[](K key);
+
+	void printInOrder(ostream& stream);
 };
 
 template<class K, class V>
@@ -85,3 +87,10 @@ inline ValueList<V> TreeMap<K, V>::operator[](K key)
 {
 	return get(key);
 }
+
+template<class K, class V>
+inline void TreeMap<K, V>::printInOrder(ostream& os)
+{
+	binaryTree.printInOrder(os);
+}
+

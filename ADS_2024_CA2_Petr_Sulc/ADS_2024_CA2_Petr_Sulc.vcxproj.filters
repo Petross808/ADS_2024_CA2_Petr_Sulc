@@ -13,41 +13,76 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{7a8d0d3b-28b2-495d-81d9-a57368e317d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BinaryTree">
+      <UniqueIdentifier>{390745ec-cf90-4c0c-84dd-71a048985b3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TreeMap">
+      <UniqueIdentifier>{b782d11b-884b-42ad-acba-cfe5ff9c9c6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ADS_2024_CA2_Petr_Sulc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TreeMap.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="ApplicationPart2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ApplicationPart4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityKeyBase.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeMap.h">
+      <Filter>Header Files\TreeMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BSTNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KVPair.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ApplicationPart2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ValueNode.h">
+    <ClInclude Include="ApplicationPart4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EntityKey.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityKeyWrapper.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="BSTNode.h">
+      <Filter>Header Files\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Header Files\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="KVPair.h">
+      <Filter>Header Files\TreeMap</Filter>
+    </ClInclude>
     <ClInclude Include="ValueList.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\TreeMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueNode.h">
+      <Filter>Header Files\TreeMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="WordListPart2.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="randomData.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

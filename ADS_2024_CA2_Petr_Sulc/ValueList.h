@@ -14,6 +14,8 @@ public:
 	void add(ValueList<V>& list);
 	ValueNode<V>* first();
 	int getSize();
+
+	void print();
 };
 
 template<class V>
@@ -74,4 +76,18 @@ template<class V>
 inline int ValueList<V>::getSize()
 {
 	return size;
+}
+
+template<class V>
+inline void ValueList<V>::print()
+{
+	if (first() == nullptr)
+		return;
+
+	ValueNode<V>* current = first();
+	for (int i = 0; i < getSize(); i++)
+	{
+		cout << "\nValue [" << i << "]: " << current->value;
+		current = current->next;
+	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "ValueList.h"
+#include <ostream>
 
 template<class K, class V>
 struct KVPair
@@ -21,6 +22,12 @@ public:
 	bool operator>(KVPair<K, V>& other);
 	bool operator==(KVPair<K, V>& other);
 	KVPair<K, V>& operator=(KVPair<K, V>& other);
+
+	friend std::ostream& operator<<(std::ostream& out, KVPair<K, V>& key)
+	{
+		out << "\nKey: " << key.getKey() << " [" << key.getValueList().getSize() << " values]";
+		return out;
+	};
 };
 
 template<class K, class V>
@@ -80,4 +87,3 @@ inline KVPair<K, V>& KVPair<K, V>::operator=(KVPair<K, V>& other)
 	values.add(otherVals);
 	return *this;
 }
-

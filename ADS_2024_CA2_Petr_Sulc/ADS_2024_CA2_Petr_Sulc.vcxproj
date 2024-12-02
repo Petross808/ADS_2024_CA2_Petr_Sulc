@@ -129,18 +129,28 @@
   <ItemGroup>
     <ClCompile Include="ADS_2024_CA2_Petr_Sulc.cpp" />
     <ClCompile Include="ApplicationPart2.cpp" />
+    <ClCompile Include="ApplicationPart4.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityKeyBase.h" />
     <ClCompile Include="TreeMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationPart2.h" />
+    <ClInclude Include="ApplicationPart4.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BSTNode.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityKey.h" />
+    <ClInclude Include="EntityKeyWrapper.h" />
     <ClInclude Include="KVPair.h" />
     <ClInclude Include="ValueList.h" />
     <ClInclude Include="ValueNode.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="WordListPart2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="randomData.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
